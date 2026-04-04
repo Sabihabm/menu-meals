@@ -23,10 +23,16 @@ cartIcon.addEventListener("click", () =>
 closeBtn.addEventListener("click", () =>
   cartTab.classList.remove("cart-tab-active"),
 );
-hamburger.addEventListener("click", () =>
-  mobileMenu.classList.toggle("mobile-menu-active"),
-);
-hamburger.addEventListener("click", () => bars.classList.toggle("fa-xmark"));
+
+
+hamburger.addEventListener("click", (e) => {
+  e.preventDefault();
+  mobileMenu.classList.toggle("mobile-menu-active");
+  bars.classList.toggle("fa-bars");
+  bars.classList.toggle("fa-xmark");
+});
+
+
 
 let productList = [];
 let cartProduct = [];
@@ -76,9 +82,16 @@ const showCards = () => {
 };
 
 const addToCart = (product) => {
-  const existingProduct = cartProduct.find((item) => item.id === product.id);
-  if (existingProduct) {
-    alert("Item already in your cart!");
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  // ❌ not logged in
+  if (!user) {
+    alert("Please login first!");
+
+    // open login modal
+    const authModal = document.querySelector(".auth-modal");
+    authModal.classList.add("active");
+
     return;
   }
 
@@ -155,3 +168,111 @@ const initApp = () => {
 };
 
 initApp();
+
+
+
+// login
+// ================= AUTH ELEMENTS =================
+const signinBtns = document.querySelectorAll(".signin-btn");
+const authModal = document.querySelector(".auth-modal");
+const closeAuth = document.querySelector(".close-auth");
+const loginBtn = document.querySelector("#loginBtn");
+
+const emailInput = document.querySelector("#emailInput");
+const passwordInput = document.querySelector("#passwordInput");
+
+// ================= UPDATE UI =================
+const updateAuthUI = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  signinBtns.forEach((btn) => {
+    btn.textContent = user ? "Logout" : "Sign in";
+  });
+};
+
+// ================= LOGIN / LOGOUT =================
+signinBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user) {
+      // LOGOUT
+      localStorage.removeItem("user");
+      alert("Logged out!");
+      updateAuthUI();
+    } else {
+      // OPEN MODAL
+      if (authModal) {
+        authModal.classList.add("active");
+      }
+    }
+  });
+});
+
+// ================= CLOSE MODAL =================
+if (closeAuth && authModal) {
+  closeAuth.addEventListener("click", () => {
+    authModal.classList.remove("active");
+  });
+}
+
+// ================= LOGIN =================
+if (loginBtn && emailInput && passwordInput) {
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (!email || !password) {
+      alert("Fill all fields");
+      return;
+    }
+
+    localStorage.setItem("user", JSON.stringify({ email }));
+
+    alert("Login successful!");
+
+    if (authModal) {
+      authModal.classList.remove("active");
+    }
+
+    emailInput.value = "";
+    passwordInput.value = "";
+
+    updateAuthUI();
+  });
+}
+
+// ================= RUN ON LOAD =================
+updateAuthUI();
+
+
+// ================= ORDER BUTTON =================
+const orderBtn = document.querySelector(".order-btn");
+
+if (orderBtn) {
+  orderBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    // ❌ NOT LOGGED IN
+    if (!user) {
+      alert("Please login to order!");
+
+      if (authModal) {
+        authModal.classList.add("active");
+      }
+      return;
+    }
+
+    // ✅ LOGGED IN → SCROLL TO MENU
+    const menuSection = document.getElementById("menu");
+    if (menuSection) {
+      menuSection.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+}

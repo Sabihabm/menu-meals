@@ -16,25 +16,28 @@
     <!-- Header Part -->
     <header>
         <nav class="navbar flex between wrapper">
-            <a herf="#" class="logo">Foodie.</a>
+            <a herf="#home" class="logo">Foodie.</a>
 
 
             <!-- DESKTOP MENU -->
             <ul class="navlist flex gap-3">
                 <li>
-                    <a href="#">Home</a>
+                    <a href="#home">Home</a>
                 </li>
                 <li>
-                    <a href="#">Menu</a>
+                    <a href="#service">Service</a>
                 </li>
                 <li>
-                    <a href="#">Service</a>
+                    <a href="#menu">Menu</a>
                 </li>
                 <li>
-                    <a href="#">About us</a>
+                    <a href="#review">Review</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#about">About us</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
                 </li>
             </ul>
 
@@ -45,7 +48,7 @@
                     <span class="cart-value">0</span>
                 </a>
 
-                <a href="#" class="btn">
+                <a href="#" class="btn signin-btn">
                     Sign in
                     &nbsp;
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -60,22 +63,25 @@
             <!-- MOBILE MENU -->
             <ul class="mobile-menu">
                 <li>
-                    <a href="#">Home</a>
+                    <a href="#home">Home</a>
                 </li>
                 <li>
-                    <a href="#">Menu</a>
+                    <a href="#service">Service</a>
                 </li>
                 <li>
-                    <a href="#">Service</a>
+                    <a href="#menu">Menu</a>
                 </li>
                 <li>
-                    <a href="#">About us</a>
+                    <a href="#review">Review</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#about">About us</a>
                 </li>
                 <li>
-                    <a href="#" class="btn">
+                    <a href="#contact">Contact</a>
+                </li>
+                <li>
+                    <a href="#" class="btn signin-btn">
                         Sign in
                         &nbsp;
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -87,7 +93,7 @@
 
     <!-- Section part -->
     <main>
-        <section>
+        <section id="home">
             <div class="hero-section flex wrapper gap-4">
                 <div class="content">
                     <h1>Enjoy Your Delicious
@@ -99,7 +105,7 @@
                         food with fast delivery.
                     </p>
                     <div class="flex gap-2">
-                        <a href="#" class="btn">Order now</a>
+                        <a href="#" class="btn order-btn">Order now</a>
 
                         <a href="#" class="social-icon">
                             <i class="fa-brands fa-x-twitter"></i>
@@ -125,7 +131,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="service">
             <div class="wrapper p-top">
                 <div class="text-center">
                     <h5>Our Services</h5>
@@ -159,7 +165,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="menu">
             <div class="wrapper p-top">
                 <div class="text-center">
                     <h5>Our Menu</h5>
@@ -167,7 +173,7 @@
                 </div>
 
                 <div class="card-list text-center flex mt-4 gap-2">
-                <!--<div class="order-card">
+                    <!--<div class="order-card">
                         <div class="card-image">
                             <img src="images/burger.png">
                         </div>
@@ -178,7 +184,7 @@
                     -->
                 </div>
 
-                <!-- CART TAB  -->   
+                <!-- CART TAB  -->
                 <div class="cart-tab">
 
                     <h3>Your Cart</h3>
@@ -323,12 +329,12 @@
                         <a href="#" class="btn">Check out</a>
                     </div>
 
-                </div>                          
+                </div>
 
             </div>
         </section>
 
-        <section>
+        <section id="review">
             <div class="wrapper p-top flex gap-3">
                 <div class="image-container">
                     <img src="images/delivery-boy-with-phone.png">
@@ -422,7 +428,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="about">
             <div class="wrapper p-top">
                 <div class="app-container flex between">
                     <div class="image-container">
@@ -442,7 +448,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="contact">
             <div class="wrapper p-top">
                 <div class="text-center">
                     <h5>Our subscribe</h5>
@@ -451,8 +457,8 @@
                         We recommend you to subscribe to our newspaper, drop your email below
                     </p>
                     <label class="input-container flex ">
-                        <input type="email" name="email" id="email"
-                         placeholder="Enter your email address"autocomplete="off">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address"
+                            autocomplete="off">
                         <a href="#" class="btn">Subscribe</a>
                     </label>
                 </div>
@@ -553,7 +559,23 @@
         </div>
     </footer>
 
+
+    <!-- sign in  -->
+
+    <div class="auth-modal">
+        <div class="auth-box">
+            <h2>Sign In</h2>
+
+            <input type="email" id="emailInput" placeholder="Enter email" />
+            <input type="password" id="passwordInput" placeholder="Enter password" />
+
+            <button class="btn" id="loginBtn">Login</button>
+            <button class="close-auth">Close</button>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
 </body>
 
 </html>

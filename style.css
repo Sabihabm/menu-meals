@@ -20,6 +20,24 @@ body{
     background: var(--eye-ball);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white; /* important so content doesn’t show through */
+}
+main {
+  margin-top: 80px; /* adjust based on your navbar height */
+}
+section {
+  scroll-margin-top: 80px; /* same as navbar height */
+}
 
 
 /* BASIC STYLING */
@@ -543,6 +561,36 @@ input[type="email"]:focus{
         left: 50%;
         transform: translateX(-50%);
     }
+
+
+    /* SIGN IN TAB STYLING */
+
+    .auth-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.auth-modal.active {
+  display: flex;
+}
+
+.auth-box {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 
 
