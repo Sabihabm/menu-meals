@@ -18,12 +18,6 @@ A modern food delivery web application built using HTML, CSS, and JavaScript.
 * CSS
 * JavaScript
 
-## 📌 Future Improvements
-
-* Backend authentication
-* Payment integration
-* React version upgrade
-* Database integration
 
 ## 💡 Author
 
