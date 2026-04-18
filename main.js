@@ -95,6 +95,18 @@ const addToCart = (product) => {
     return;
   }
 
+  // Check if item already exists in cart
+  const existingItem = Array.from(cartList.querySelectorAll(".item")).find((item) => {
+    return item.querySelector(".detail h4").textContent === product.name;
+  });
+
+  if (existingItem) {
+    // Item already exists in cart
+    alert("This item is already in your cart! Use the plus button to increase quantity.");
+    return;
+  }
+
+  // Item doesn't exist, add it new
   cartProduct.push(product);
 
   let quantity = 1;
@@ -121,6 +133,12 @@ const addToCart = (product) => {
             </a>
         </div>
     `;
+
+  // Hide empty cart message when adding first item
+  const emptyMsg = cartList.querySelector(".empty-cart-message");
+  if (emptyMsg) {
+    emptyMsg.style.display = "none";
+  }
 
   cartList.appendChild(cartItem);
   updateTotals();
@@ -153,6 +171,15 @@ const addToCart = (product) => {
         cartItem.remove();
         cartProduct = cartProduct.filter((item) => item.id !== product.id);
         updateTotals();
+
+        // Show empty cart message when all items are removed
+        const remainingItems = cartList.querySelectorAll(".item");
+        if (remainingItems.length === 0) {
+          const emptyMsg = cartList.querySelector(".empty-cart-message");
+          if (emptyMsg) {
+            emptyMsg.style.display = "flex";
+          }
+        }
       }, 300);
     }
   });
@@ -276,3 +303,48 @@ if (orderBtn) {
     }
   });
 }
+
+// ================= CHECKOUT BUTTON =================
+const checkoutBtns = document.querySelectorAll(".btn-container .btn:last-child");
+
+checkoutBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Check if cart is empty
+    const cartItems = cartList.querySelectorAll(".item");
+    
+    if (cartItems.length === 0) {
+      alert("Your cart is empty! Add items before checkout.");
+      return;
+    }
+
+    // Calculate total items and price
+    let totalQuantity = 0;
+    let totalPrice = 0;
+
+    cartItems.forEach((item) => {
+      const quantity = parseInt(item.querySelector(".quantity-value").textContent);
+      const price = parseFloat(item.querySelector(".item-total").textContent.replace("$", ""));
+      totalQuantity += quantity;
+      totalPrice += price;
+    });
+
+    // Show confirmation
+    const confirmed = confirm(
+      `Order Summary:\n\nTotal Items: ${totalQuantity}\nTotal Price: $${totalPrice.toFixed(2)}\n\nProceed with checkout?`
+    );
+
+    if (confirmed) {
+      alert("Order placed successfully! Thank you for your purchase.");
+      
+      // Clear the cart
+      cartList.innerHTML = "";
+      cartProduct = [];
+      updateTotals();
+      
+      // Close cart tab
+      cartTab.classList.remove("cart-tab-active");
+    }
+  });
+});

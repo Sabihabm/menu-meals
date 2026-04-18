@@ -307,6 +307,19 @@ h4{
     overflow: auto;
 }
 
+.empty-cart-message {
+    text-align: center;
+    padding: 2rem;
+    color: gray;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 150px;
+}
+
 .cart-list::-webkit-scrollbar{
     width: 0;
 }
@@ -325,9 +338,20 @@ h4{
     font-weight: 400;
 }
 
+.btn-container {
+    width: 100%;
+    padding: 1rem;
+    background: var(--pure-white);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
 .btn-container .btn{
     background: var(--lead);
     transition: .3s ease;
+    flex: 1;
+    text-align: center;
 }
 
 .btn-container .btn:hover{
@@ -388,10 +412,27 @@ h4{
 
 /* section 03 */
 
+#review .wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 3rem;
+}
+
+#review .image-container {
+    flex: 0 0 auto;
+    min-width: 300px;
+}
+
+#review .image-container img {
+    width: 100%;
+    max-width: 350px;
+}
+
 .review-container{
     width: 650px;
     max-width: 100%;
     flex: 1;
+    overflow: hidden;
 }
 .swiper {
       width: 100%;
@@ -426,6 +467,17 @@ h4{
     align-items: center;
     text-align: center;
     line-height: 2.5rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.review-container .flex.between {
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
 }
 
 /* SECTION 04 */
@@ -470,6 +522,60 @@ input[type="email"]{
 
 input[type="email"]:focus{
     outline: none;
+}
+
+
+/* SIGN IN TAB STYLING */
+
+.auth-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.auth-modal.active {
+  display: flex;
+}
+
+.auth-box {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-box h2 {
+  margin-bottom: 1rem;
+  color: var(--lead);
+}
+
+.auth-box input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.auth-box button {
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.auth-box .close-auth {
+  background: var(--hint-yellow);
+  border: none;
 }
 
 
@@ -563,37 +669,6 @@ input[type="email"]:focus{
     }
 
 
-    /* SIGN IN TAB STYLING */
-
-    .auth-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-.auth-modal.active {
-  display: flex;
-}
-
-.auth-box {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-
-
     /* SECTION STYLING */
 
 
@@ -619,5 +694,25 @@ input[type="email"]:focus{
     /* SECTION 01 */
     h2{
         font-size: 3rem;
+    }
+
+    /* REVIEW SECTION RESPONSIVE */
+    #review .wrapper {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    #review .image-container {
+        flex: 1;
+        min-width: 100%;
+    }
+
+    #review .image-container img {
+        max-width: 100%;
+    }
+
+    .review-container {
+        flex: 1;
+        min-width: 100%;
     }
 }
