@@ -18,6 +18,9 @@ A modern food delivery web application built using HTML, CSS, and JavaScript.
 * CSS
 * JavaScript
 
+## Screen Short 
+<img width="1920" height="1020" alt="Screenshot 2026-04-04 172157" src="https://github.com/user-attachments/assets/d12d60b9-f0ea-444f-896a-8347d0881492" />
+
 
 ## 💡 Author
 
